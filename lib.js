@@ -58,7 +58,7 @@ CollectionExtensions.addPrototype('initAlgolia', function(algoliaIndex, options)
       for (var i = 0, l = doc.length; i < l; i++) {
         doc[i].objectID = doc[i]._id + '-' + i;
       }
-      algoliaDocs.concat(doc);
+      algoliaDocs = algoliaDocs.concat(doc);
     }
     else {
       doc.objectID = doc._id;
