@@ -2,7 +2,7 @@ Package.describe({
   name: 'semeano:mongo-algolia-sync',
   summary: 'Automatically sync a Mongo collection to an Algolia index',
   git: 'https://github.com/semeano/meteor-mongo-algolia-sync.git',
-  version: '0.1.3'
+  version: '0.1.4'
 });
 
 Package.onUse(function(api, where) {
