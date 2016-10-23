@@ -7,7 +7,7 @@ Installation
 ------------
 
 ``` sh
-meteor add gwendall:mongo-algolia-sync
+meteor add semeano:mongo-algolia-sync
 ```
 
 Methods
@@ -33,7 +33,7 @@ MongoCollection.syncAlgolia(AlgoliaIndex, {
 
 Options:
 - debug (boolean): Console logs operations or not (```false``` by default).
-- transform (function): Allows to transform the documents that will be saved to Algolia (return ```false``` to prevent syncing a given document).
+- transform (function): Allows to transform the documents that will be saved to Algolia (return ```false``` to prevent syncing a given document). You can also return an array if you want to split a record into many. This is helpful if you want to denormalize your entry (check http://stackoverflow.com/questions/34682395/algolia-and-search-through-an-array).
 
 **MongoCollection.initAlgolia(AlgoliaIndex, options)**  
 
