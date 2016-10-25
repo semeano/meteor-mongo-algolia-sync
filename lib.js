@@ -35,7 +35,17 @@ CollectionExtensions.addPrototype('syncAlgolia', function(algoliaIndex, options)
   }, { fetchPrevious: false });
 
   Collection.after.remove(function(userId, doc) {
-    algoliaIndex.deleteObjects([doc._id], function(error, content) {
+    if (options.transform) doc = options.transform(doc) || {};
+    var docIds = [];
+    if (Object.prototype.toString.call(doc) === '[object Array]') {
+      for (var i = 0, l = doc.length; i < l; i++) {
+        docIds.push(doc[i]._id + '-' + i);
+      }
+    }
+    else {
+      docIds.push(doc._id);
+    }
+    algoliaIndex.deleteObjects(docIds, function(error, content) {
       if (!options.debug) return;
       if (error) console.error('Error removing algolia doc.', error);
       else console.log('Removed Algolia doc.', content);
